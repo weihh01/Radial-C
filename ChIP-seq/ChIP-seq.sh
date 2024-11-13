@@ -13,4 +13,4 @@ for i in ChIP-DMSO ChIP-Flavo;do
 done
 computeMatrix reference-point -S ChIP-DMSO.bw ChIP-Flavo.bw -R /mnt/disk4/public/RefBed/refGene_hg38/hg38_TSS.bed --referencePoint center --beforeRegionStartLength 1000 --afterRegionStartLength 4000 --binSize 10 -o TSS.gz -p 40 --missingDataAsZero
 plotProfile -m TSS.gz -o TSS.png --refPointLabel 'TSS' --samplesLabel  ChIP-DMSO ChIP-Flavo --perGroup
-done
+
