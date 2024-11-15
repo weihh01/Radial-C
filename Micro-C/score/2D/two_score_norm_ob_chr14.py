@@ -57,22 +57,6 @@ Mat_30min[where_are_nan] = 0
 Mat_30min[where_are_inf] = 0
 
 
-#returnMat_all = Mat_1min + Mat_5min/Mat_1min + Mat_30min/Mat_5min
-returnMat_all =  Mat_5min/Mat_1min + Mat_30min/Mat_5min
-
-where_are_nan = np.isnan(returnMat_all)
-where_are_inf = np.isinf(returnMat_all)
-returnMat_all[where_are_nan] = 0
-returnMat_all[where_are_inf] = 0
-for i in range(a):
-	for j in range(a):
-		returnMat_all[j,i]=returnMat_all[i,j]
-
-def non_zero_mean(np_arr):
-    exist = (np_arr != 0)
-    num = np_arr.sum(axis=0)
-    den = exist.sum(axis=0)
-    return num/den
 
 for i in range(a):
 	for j in range(a):
@@ -89,9 +73,7 @@ for i in range(a):
 
 
 
-col_ave=non_zero_mean(returnMat_all)
-np.savetxt("col_ave_OE_chr14.txt",col_ave,fmt='%.6f')
-np.savetxt("returnMat_ob_chr14.txt",returnMat_all,fmt='%.6f')
+
 col_ave = np.sum(Mat_30min, axis=0)/np.sum(Mat_5min, axis=0) + np.sum(Mat_5min, axis=0)/np.sum(Mat_1min, axis=0)
 np.savetxt("col_ave_OE_chr14_new.txt",col_ave,fmt='%.6f')
 
